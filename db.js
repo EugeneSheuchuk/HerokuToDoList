@@ -21,13 +21,6 @@ module.exports = {
             {
                 useNewUrlParser: true,
                 useUnifiedTopology: true,
-                server: {
-                    sslValidate:true,
-                    sslCA:ca,
-                    sslKey:key,
-                    sslCert:cert,
-                    sslPass:'10gen'
-                }
             });
     },
     async addUser(user) {
