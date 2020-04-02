@@ -1,0 +1,22 @@
+{
+  "name": "todolistsserver",
+  "version": "1.0.0",
+  "description": "litle server for todolists application\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[Dt\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "author": "Eugene Sheuchuk",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "cors": "2.8.5",
+    "express": "4.17.1",
+    "mongoose": "5.9.6",
+    "uuidv4": "^6.0.7"
+  },
+  "devDependencies": {
+    "nodemon": "2.0.2"
+  }
+}
