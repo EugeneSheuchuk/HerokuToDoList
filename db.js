@@ -20,7 +20,14 @@ module.exports = {
         return mongoose.connect('mongodb+srv://ToDoListUser:ToDoListUser@todolistproject-pjhmb.mongodb.net/test?retryWrites=true&w=majority',
             {
                 useNewUrlParser: true,
-                useUnifiedTopology: true
+                useUnifiedTopology: true,
+                server: {
+                    sslValidate:true,
+                    sslCA:ca,
+                    sslKey:key,
+                    sslCert:cert,
+                    sslPass:'10gen'
+                }
             });
     },
     async addUser(user) {
