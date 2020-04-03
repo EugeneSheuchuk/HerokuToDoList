@@ -28,14 +28,15 @@ router.post('/auth', async (req, res) => {
         const checkUser = await mongodb.getUserId(user.email);
         if (!checkUser) {
             res.status(406).send({errorEmail: 'error in email or such email does not exist'});
+            return;
         }
         if (checkUser.pass !== user.pass) {
             res.status(406).send({errorPass: 'the password is not valid'});
+            return;
         }
         const hashEmail = fromString(checkUser.email);
         serverFunction.setUserSession(hashEmail, checkUser._id);
         res.cookie('todoList', hashEmail, {path: '/', expires: new Date(Date.now() + 2592000)}).send({isAuth: true});
-
     } catch (e) {
         res.status(500).send(e);
     }
@@ -53,6 +54,7 @@ router.post('/registartion', async (req, res) => {
         const checkEmail = await mongodb.getUserId(user.email);
         if (checkEmail) {
             res.status(406).send({errorEmail: 'this email has been used'});
+            return;
         }
         const userOnDB = await mongodb.addUser(user);
         const hashEmail = fromString(userOnDB.email);
