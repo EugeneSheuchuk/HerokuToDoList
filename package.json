@@ -15,5 +15,8 @@
     "express": "4.17.1",
     "mongoose": "5.9.6",
     "uuidv4": "^6.0.7"
+  },
+  "devDependencies": {
+    "nodemon": "2.0.2"
   }
 }

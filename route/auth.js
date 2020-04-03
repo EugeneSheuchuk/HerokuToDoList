@@ -62,5 +62,13 @@ router.post('/registartion', async (req, res) => {
         res.status(500).send(e);
     }
 });
+router.put('/logout', (req, res) => {
+    if (!serverFunction.isUserAuth(req.cookies)) {
+        res.send({isAuth: false});
+        return;
+    }
+    serverFunction.sessionStorage[req.cookies.todoList] = null;
+    res.send({isAuth: false});
+});
 
 module.exports = router;

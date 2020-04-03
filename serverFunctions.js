@@ -1,7 +1,7 @@
 const sessionStorage = {};
 
 function isUserAuth(cookies) {
-    return sessionStorage[cookies.todoList] !== undefined;
+    return (sessionStorage[cookies.todoList] !== undefined && sessionStorage[cookies.todoList] !== null);
 }
 
 function setUserSession(field, userId) {
