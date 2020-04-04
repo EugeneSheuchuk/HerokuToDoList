@@ -15,12 +15,12 @@ if (port == null || port == '') {
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
-app.use('/', express.static(path.resolve(__dirname, './../build')));
+app.use('/', express.static(path.resolve(__dirname, './build')));
 app.use('/auth', auth);
 app.use('/main', main);
 app.use('/tasks', tasks);
 app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, './../build/index.html'));
+    res.sendFile(path.resolve(__dirname, './build/index.html'));
 });
 
 mongodb.connectDBOnline()
