@@ -14,8 +14,8 @@ router.get('/', async (req, res) => {
             res.send({isAuth: false});
             return;
         }
-        const lists = await mongodb.getLists(serverFunction.sessionStorage[req.cookies.todoList]);
-        res.send({isAuth: true, data: lists});
+        const userId = serverFunction.sessionStorage[req.cookies.todoList];
+        serverFunction.sendUserLists(res, userId);
     } catch (e) {
         res.status(500).send(e);
     }
@@ -34,8 +34,7 @@ router.post('/', async (req, res) => {
         const userId = serverFunction.sessionStorage[req.cookies.todoList];
         const result = await mongodb.addList(req.body.listName, userId);
         if (result) {
-            const lists = await mongodb.getLists(userId);
-            res.send({isAuth: true, data: lists});
+            serverFunction.sendUserLists(res, userId);
         } else {
             res.status(406).send("List was't add");
         }
@@ -56,8 +55,7 @@ router.put('/', async (req, res) => {
         const userId = serverFunction.sessionStorage[req.cookies.todoList];
         const result = await mongodb.changeListName(req.body.listId, req.body.newListName);
         if (result) {
-            const lists = await mongodb.getLists(userId);
-            res.send({isAuth: true, data: lists});
+            serverFunction.sendUserLists(res, userId);
         } else {
             res.status(406).send("The name of list was't change");
         }
@@ -72,11 +70,10 @@ router.delete('/', async (req, res) => {
             res.send({isAuth: false});
             return;
         }
+        const userId = serverFunction.sessionStorage[req.cookies.todoList];
         const result = await mongodb.deleteList(req.body.listId);
         if (result) {
-            const userId = serverFunction.sessionStorage[req.cookies.todoList];
-            const lists = await mongodb.getLists(userId);
-            res.send({isAuth: true, data: lists});
+            serverFunction.sendUserLists(res, userId);
         } else {
             res.status(406).send("List was't delete");
         }
